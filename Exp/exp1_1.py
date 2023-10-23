@@ -18,17 +18,17 @@ image4_frames = imageio.get_reader(image4_path)
 
 # 展示png图片
 cv2.imshow("img1", image1)
-cv2.waitKey(0)
+cv2.waitKey(1000)
 cv2.destroyAllWindows()
 
 # 展示jpg图片
 cv2.imshow("img2", image2)
-cv2.waitKey(0)
+cv2.waitKey(1000)
 cv2.destroyAllWindows()
 
 # 展示bmp图片
 cv2.imshow("img3", image3)
-cv2.waitKey(0)
+cv2.waitKey(1000)
 cv2.destroyAllWindows()
 
 # 读取每一帧
