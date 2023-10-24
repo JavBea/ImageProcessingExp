@@ -17,13 +17,14 @@ out = np.zeros((y_len, x_len, 3))
 for i in range(x_len):
     for j in range(y_len):
         out[j, i] = origin[math.floor(j / y_scale_factor), math.floor(i / x_scale_factor)]
+        out[j,i] = out[j,i][::-1]
         # if np.array_equal(out[j, i], [0, 0, 0]):
         #     print(i)
         #     print("\t")
         #     print(j)
         #     print('\n')
 # out[0, 0, 0] = 5
-print(out)
+# print(out)
 # print(origin)
 # print(type(origin))
 image = Image.fromarray(out.astype('uint8'))
@@ -31,4 +32,3 @@ image = Image.fromarray(out.astype('uint8'))
 single_insertion_path = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp2\single.png'
 image.save(single_insertion_path)
 
-# image.show()
