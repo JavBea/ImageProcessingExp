@@ -17,11 +17,11 @@ out = np.zeros((y_len, x_len, 3))
 for i in range(x_len):
     for j in range(y_len):
         out[j, i] = origin[math.floor(j / y_scale_factor), math.floor(i / x_scale_factor)]
-        if np.array_equal(out[j, i], [0, 0, 0]):
-            print(i)
-            print("\t")
-            print(j)
-            print('\n')
+        # if np.array_equal(out[j, i], [0, 0, 0]):
+        #     print(i)
+        #     print("\t")
+        #     print(j)
+        #     print('\n')
 # out[0, 0, 0] = 5
 print(out)
 # print(origin)
