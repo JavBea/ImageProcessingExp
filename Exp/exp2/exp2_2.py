@@ -21,7 +21,7 @@ def decentralize(x, y, w, h):
     return result
 
 
-origin_path = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp2\lab2.png'
+origin_path = r'/resource/exp2/lab2.png'
 origin = cv2.imread(origin_path)
 
 # 得到图片的长宽和深度参数
@@ -55,6 +55,6 @@ for i in range(shape[1]):
         out[j, i] = out[j, i][::-1]
 
 image = Image.fromarray(out.astype('uint8'))
-save_path = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp2\transformed.png'
+save_path = r'/resource/exp2/transformed.png'
 image.save(save_path)
 image.show()

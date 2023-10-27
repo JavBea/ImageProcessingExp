@@ -1,15 +1,15 @@
 from PIL import Image
 import cv2
 
-a_path = r"..\resource\exp1\exp1_2\a.png"
-bg_path = r"..\resource\exp1\exp1_2\bg.png"
+a_path = r"../../resource/exp1/exp1_2/a.png"
+bg_path = r"../../resource/exp1/exp1_2/bg.png"
 
 # 读取前景的原图
 image = Image.open(a_path)
 
 # 得到前景的alpha通道
 alpha_channel = image.getchannel('A')
-alpha_save_path = r"E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp1\exp1_2\a_alpha.png"
+alpha_save_path = r"/resource/exp1/exp1_2/a_alpha.png"
 # 保存到指定路径
 alpha_channel.save(alpha_save_path)
 
@@ -36,7 +36,7 @@ background = cv2.multiply(1.0 - alpha, background)
 # 合成
 composition = cv2.add(foreground, background)
 # 读出另存
-composition_path = r"E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp1\exp1_2\composition.png"
+composition_path = r"/resource/exp1/exp1_2/composition.png"
 cv2.imwrite(composition_path, composition)
 
 composition = cv2.imread(composition_path)

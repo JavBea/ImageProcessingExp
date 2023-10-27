@@ -6,7 +6,7 @@ from PIL import Image
 x_scale_factor = 2
 y_scale_factor = 2
 
-origin = cv2.imread(r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp2\lab2.png')
+origin = cv2.imread(r'/resource/exp2/lab2.png')
 shape = origin.shape
 # print(shape)
 
@@ -29,6 +29,6 @@ for i in range(x_len):
 # print(type(origin))
 image = Image.fromarray(out.astype('uint8'))
 
-single_insertion_path = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp2\single.png'
+single_insertion_path = r'/resource/exp2/single.png'
 image.save(single_insertion_path)
 
