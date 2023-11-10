@@ -22,6 +22,7 @@ def demapping(x, y):
     print(solution)
     return solution
 
-demapping(0.2,0.5)
-demapping(0.3,0.8)
 
+if __name__ == "__init__":
+    demapping(0.2, 0.5)
+    demapping(0.3, 0.8)

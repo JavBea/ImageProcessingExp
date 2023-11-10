@@ -5,23 +5,24 @@ class ImageRotator:
     def __init__(self):
         pass
 
-    def rotate_image(self, input_path, output_path, rotation_angle):
+    def rotate_image(self,input_path, output_path, angle):
         # 读取输入图像
-        image = cv2.imread(input_path)
+        input_image = cv2.imread(input_path)
 
-        # 检查输入的旋转角度，顺时针旋转90度、180度或270度
-        if rotation_angle == 90:
-            rotated_image = cv2.transpose(image)
-            rotated_image = cv2.flip(rotated_image, flipCode=1)
-        elif rotation_angle == 180:
-            rotated_image = cv2.flip(image, flipCode=-1)
-        elif rotation_angle == 270:
-            rotated_image = cv2.transpose(image)
-            rotated_image = cv2.flip(rotated_image, flipCode=0)
-        else:
-            print("Invalid rotation angle. Please choose 90, 180, or 270 degrees.")
+        # 检查角度是否合法（支持90度、180度、270度的顺时针旋转）
+        if angle not in [90, 180, 270]:
+            print("Invalid rotation angle. Supported angles: 90, 180, 270.")
             return
+
+        # 旋转图像
+        if angle == 90:
+            rotated_image = cv2.rotate(input_image, cv2.ROTATE_90_CLOCKWISE)
+        elif angle == 180:
+            rotated_image = cv2.rotate(input_image, cv2.ROTATE_180)
+        else:
+            rotated_image = cv2.rotate(input_image, cv2.ROTATE_90_COUNTERCLOCKWISE)
 
         # 保存旋转后的图像
         cv2.imwrite(output_path, rotated_image)
-        print(f"Image rotated {rotation_angle} degrees and saved to {output_path}")
+        print(f"Image rotated {angle} degrees clockwise and saved to {output_path}")
+

@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from PIL import Image
 
+
 # 放缩方法，参数分别为图片路径、输出路径、横向放缩参数、纵向放缩参数
 def zoom(in_path, out_path, x_scale_factor, y_scale_factor):
     try:
@@ -65,6 +66,7 @@ def zoom(in_path, out_path, x_scale_factor, y_scale_factor):
     image.show()
 
 
-input = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp2\lab2.png'
-output = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp2\double.png'
-zoom(input, output, 0.5, 2)
+if __name__ == "__main__":
+    input = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp2\lab2.png'
+    output = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp2\double.png'
+    zoom(input, output, 0.5, 2)

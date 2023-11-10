@@ -65,13 +65,14 @@
 # image.show()
 
 
-
 from PIL import Image
 import numpy as np
 import cv2
 import exp2_2_demapping
-import ImageRotator
+from ImageRotator import ImageRotator
+from exp2_1 import zoom
 import math
+
 
 # 中心归一化坐标
 def centralize(x, y, w, h):
@@ -79,6 +80,7 @@ def centralize(x, y, w, h):
     result[0] = (x - 0.5 * w) / (0.5 * w)
     result[1] = (y - 0.5 * h) / (0.5 * h)
     return result
+
 
 # 反中心归一化坐标
 def decentralize(x, y, w, h):
@@ -117,7 +119,7 @@ for i in range(shape[1]):
             out_row.append(origin[int(decentralized[1]), int(decentralized[0])][::-1])
     out.append(out_row)
 
-out=crop_2d_list(out)
+out = crop_2d_list(out)
 
 # for row in out:
 #     print(len(row))
@@ -130,13 +132,8 @@ image = Image.fromarray(out_array)
 # 保存图像
 save_path = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp2\transformed.png'
 image.save(save_path)
+rotator = ImageRotator()
+rotator.rotate_image(save_path, save_path, 90)
 
-
-rotator = ImageRotator
-rotator.rotate_image(rotator,save_path,save_path,90)
-
-# 显示图像（可选）
-image.show()
-
-
-
+newShape = cv2.imread(save_path).shape
+zoom(save_path, save_path, shape[1] / newShape[1], shape[0] / newShape[0])
