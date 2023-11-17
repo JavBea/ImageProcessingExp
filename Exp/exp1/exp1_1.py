@@ -1,11 +1,11 @@
 import cv2
 import imageio
-
+# E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp1\exp1_1\Img1.png
 # 图片路径
-image1_path = r'/resource/exp1/exp1_1/Img1.png'
-image2_path = r'/resource/exp1/exp1_1/Img2.jpg'
-image3_path = r'/resource/exp1/exp1_1/Img3.bmp'
-image4_path = r'/resource/exp1/exp1_1/Img4.gif'
+image1_path = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project\resource\exp1\exp1_1\Img1.png'
+image2_path = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project/resource/exp1/exp1_1/Img2.jpg'
+image3_path = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project/resource/exp1/exp1_1/Img3.bmp'
+image4_path = r'E:\MyFiles\KnowledgeBase\Year3Fall\DigitalImageProcessing\Exp\Project/resource/exp1/exp1_1/Img4.gif'
 
 # 读取图片
 image1 = cv2.imread(image1_path)
