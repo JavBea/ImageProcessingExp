@@ -23,10 +23,7 @@ def disparity_GEEMBSF(imgLeft, imgRight, windowSize=(3, 3), dMax=40, alpha=1):
     timeBegin = cv.getTickCount()  # 记录开始时间
 
     n, m = windowSize  # 窗口大小
-    rows, cols, channels = imgLeft.shape  # 该实验中 imgLeft 和 imgRight 的 shape 是一样的，rows=185,cols=231,channels=3
-    # 观察到论文中和实验要求中所给的左右原始图是185(行)x231(列)像素的，而结果图中大约是185(行)x190(列)的，
-    # 我们的结果中imgDisparity会看到右边缘有大量黑色的区域，如果将其去掉，那么会更美观也会与论文中的结果更加符合
-    # 因此在前面我们将cols=190
+    rows, cols, channels = imgLeft.shape  # 该实验中 imgLeft 和 imgRight 的 shape 是一样的
     cols = 190
     errorEnergyMatrixD = np.zeros((rows, cols, dMax), dtype=float)  # 误差能量矩阵（共dMax层），方便后续计算
     errorEnergyMatrixAvgD = np.zeros((rows, cols, dMax), dtype=float)  # 平均误差能量矩阵（共dMax层），方便后续计算
