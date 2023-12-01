@@ -7,11 +7,10 @@ from mpl_toolkits.mplot3d import Axes3D
 
 # 这是基于论文实验的复刻，论文名为：Obtaining Depth Maps From Color Images By Region Based Stereo Matching Algorithms
 
-def disparity_GEEMBSF(imgLeft, imgRight, windowSize=(3, 3), dMax=40, alpha=1):
+def disparity(imgLeft, imgRight, windowSize=(3, 3), dMax=40, alpha=1):
     """
     论文中的
     "a) Global Error Energy Minimization by Smoothing Functions"
-    函数名的命名方式：disparity 表示视差，后面的一串为该方法标题缩写
 
     :param imgLeft: 左图
     :param imgRight: 右图
@@ -47,7 +46,6 @@ def disparity_GEEMBSF(imgLeft, imgRight, windowSize=(3, 3), dMax=40, alpha=1):
         for i in range(rows):
             for j in range(cols):
                 # 对于每个 (i, j, d) 根据公式(1)计算误差能量矩阵
-                # 
                 errorEnergy = (imgLeftPlus[i:i + n, j + d:j + m + d, ...] - imgRightPlus[i:i + n, j:j + m, ...]) ** 2
                 # 将所有的元素相加，除以3*n*m，因为有3个通道，且是 n x m 的窗口
                 errorEnergyMatrixD[i, j, d] = np.sum(errorEnergy) / (3 * n * m)
@@ -174,7 +172,7 @@ def show2d(target, title=""):
 imgLeft = cv.imread('../../resource/exp5/view1m.png')
 imgRight = cv.imread('../../resource/exp5/view5m.png')
 # 得到视差图imgOriginal，可靠差异的视差图imgDisparity, 平均误差矩阵errorEnergyMatrixAvg
-imgOrignal, imgDisparity, errorEnergyMatrixAvg, time = disparity_GEEMBSF(imgLeft, imgRight)
+imgOrignal, imgDisparity, errorEnergyMatrixAvg, time = disparity(imgLeft, imgRight)
 # print(time)  # 打印函数运行时间
 # 由视差图得到深度图
 imgDepth = depthGeneration(imgDisparity, 30, 20)
@@ -183,19 +181,9 @@ imgDepth2 = depthGeneration(imgDisparity, 30, 20, 1.5)
 
 # 下面绘制三幅图像
 # 视差图图像
-
 show2d(imgOrignal,'disparity figure')
+# 平均误差能量矩阵图像
 show2d(errorEnergyMatrixAvg,'errorEnergyMatrixAvg')
-# plt.figure()
-# plt.imshow(imgOrignal, cmap='gray', vmin=0, vmax=40)
-# plt.title('disparity figure')  # 设置标题
-# ax = plt.gca()  # 返回坐标轴实例
-# x_major_locator = MultipleLocator(20)  # 坐标刻度间隔为20
-# y_major_locator = MultipleLocator(20)
-# ax.xaxis.set_major_locator(x_major_locator)  # 设置坐标间隔
-# ax.yaxis.set_major_locator(y_major_locator)
-# plt.colorbar()  # 设置灰度颜色条，用于标明不同灰度值对应的颜色
-# plt.show()
 
 # 绘制3D图像
 show3d(imgDepth)
